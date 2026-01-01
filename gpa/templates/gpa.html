@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%block title%}YOUR GPA {%endblock%}
+
+{%block content%} <br>
+
+<h1 class="text-center">IS THIS YOUR GPA?</h1> <hr> <br> <br>
+<table class="table">
+    
+  <thead>
+    <tr>
+    
+      <th scope="col">s no.</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Grade</th>
+      <th scope="col">GPA</th>
+      <th scope="col">Actions</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in final_details %}
+    <tr>  
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{data.s_name}}</td>
+      <td>{{data.s_grade}}</td>
+      <td>{{data.s_credit}}</td>
+      <td><a href="{%url 'updateGpa' data.id%}" type="button" class="btn btn-primary">Update</a></td>
+      <td><a href="{%url 'delete' data.id%}" type="button" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {%endfor%}
+
+
+  </tbody>
+
+</table>
+
+<h1>YOUR GPA IS : <b>{{ gpa }}</b> </h1>
+<h3 class="text-center">
+        <a href="{% url 'gpaCalculate' %}" class ="btn btn-info btn-sm">Add More?</a>
+</h3>
+
+
+{%endblock%}

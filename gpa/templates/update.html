@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Update{% endblock %}
+
+{% block content %}
+
+<h1>YOUR GPA WILL BE UPDATED HERE</h1>
+
+<section class="container">
+    <hr>
+
+    <div class="row">
+        <div class="col-3"></div>
+
+        <div class="col-6">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+
+        <div class="col-3"></div>
+    </div>
+</section>
+
+{% endblock %}
