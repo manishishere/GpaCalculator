@@ -13,7 +13,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request,user)
-            return redirect('/gpa/finalgpa')
+            return redirect('/gpa/home')
     else:
         form = AuthenticationForm()
         
@@ -126,3 +126,21 @@ def delete(request, id):
     details = Details.objects.filter(id = id)
     details.delete()
     return redirect('finalGpa')
+
+@login_required(login_url='/gpa/login/')
+def home(request):
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        
+        if action == 'PU':
+            return redirect('/gpaCalculate')
+        elif action == "OU":
+            return redirect('/gpaCalculate')
+            
+    
+
+    
+
+    
+    return render(request,'home.html')
+    
