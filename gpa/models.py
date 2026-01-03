@@ -19,9 +19,9 @@ class Details(models.Model):
     ]
     
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    s_name = models.CharField(max_length=150, null=False, blank=True)
+    s_name = models.CharField(max_length=150, null=False, blank=False)
     s_grade = models.CharField(max_length=150, choices=GRADE_CHOICE, null=False, blank=True)
-    s_credit = models.IntegerField(null=False, blank= True,validators=[MinValueValidator(0.5), MaxValueValidator(6)])
+    s_credit = models.IntegerField(null=False, blank= False,validators=[MinValueValidator(0.5), MaxValueValidator(6)])
 
 
 
